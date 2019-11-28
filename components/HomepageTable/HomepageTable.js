@@ -39,23 +39,27 @@ const HomepageTable = props => {
             />
           }
         >
-          {Object.keys(props.stocks).map((stockName, index) => {
-            return (
-              <StockRow
-                key={index}
-                index={index}
-                stockName={stockName}
-                stock={props.stocks[stockName]}
-                activeStock={props.activeStock}
-                changeActiveStock={props.changeActiveStock}
-                targets={props.targets}
-                targetChange={props.targetChange}
-                setBuyTarget={props.setBuyTarget}
-                setSellTarget={props.setSellTarget}
-                graphData={props.graphData}
-              />
-            );
-          })}
+          {Object.keys(props.stocks)
+            .sort()
+            .map((stockName, index) => {
+              return (
+                <StockRow
+                  key={index}
+                  index={index}
+                  stockName={stockName}
+                  stock={props.stocks[stockName]}
+                  activeStock={props.activeStock}
+                  changeActiveStock={props.changeActiveStock}
+                  targets={props.targets}
+                  targetChange={props.targetChange}
+                  setBuyTarget={props.setBuyTarget}
+                  setSellTarget={props.setSellTarget}
+                  graphData={props.graphData}
+                  homepage={true}
+                  delete={props.delete}
+                />
+              );
+            })}
         </ScrollView>
       </SafeAreaView>
     </View>

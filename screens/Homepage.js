@@ -114,6 +114,14 @@ class Homepage extends Component {
     this.getData();
   };
 
+  deleteStock = name => {
+    axios
+      .post("https://teknodeneyim.com/stocks/delete", { name })
+      .then(res => {})
+      .catch(err => console.error(err));
+    this.getData();
+  };
+
   render() {
     return (
       <TouchableWithoutFeedback
@@ -141,6 +149,7 @@ class Homepage extends Component {
               setBuyTarget={this.setBuyTarget}
               setSellTarget={this.setSellTarget}
               graphData={this.state.graphData}
+              delete={this.deleteStock}
             />
           ) : (
             <View style={[styles.container, styles.loading]}>

@@ -32,6 +32,13 @@ class StocksList extends Component {
       .catch(err => console.error(err));
   };
 
+  addNewStock = name => {
+    axios
+      .post("https://teknodeneyim.com/stocks/add", { name })
+      .then(res => {})
+      .catch(err => console.error(err));
+  };
+
   render() {
     return (
       <TouchableWithoutFeedback
@@ -46,6 +53,7 @@ class StocksList extends Component {
               headers={this.state.tableHead}
               refresh={this.getData}
               list={true}
+              addNewStock={this.addNewStock}
             />
           ) : (
             <Text>Yükleniyor</Text>

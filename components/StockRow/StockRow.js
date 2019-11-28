@@ -16,14 +16,27 @@ const StockRow = props => {
     parseFloat(props.stock.price),
     parseFloat(props.stock.prevClose)
   );
-  var swipeoutBtns = [
-    {
-      text: "Button",
-      backgroundColor: "red",
-      color: "white",
-      type: "delete"
-    }
-  ];
+  if (props.list) {
+    var swipeoutBtns = [
+      {
+        text: "Ekle",
+        backgroundColor: "green",
+        color: "white",
+        type: "add",
+        onPress: () => props.addNewStock(props.stockName)
+      }
+    ];
+  } else if (props.homepage) {
+    var swipeoutBtns = [
+      {
+        text: "Sil",
+        backgroundColor: "red",
+        color: "white",
+        type: "delete",
+        onPress: () => props.delete(props.stockName)
+      }
+    ];
+  }
   return (
     <>
       <Swipeout
