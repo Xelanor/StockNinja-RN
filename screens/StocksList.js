@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Keyboard,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  ActivityIndicator
 } from "react-native";
 import axios from "axios";
 
@@ -27,6 +28,7 @@ class StocksList extends Component {
         "https://hpnomowzxh.execute-api.us-east-1.amazonaws.com/default/fetch_all_stocks"
       )
       .then(res => {
+        console.log("mounted");
         this.setState({ stocks: res.data });
       })
       .catch(err => console.error(err));
@@ -56,7 +58,9 @@ class StocksList extends Component {
               addNewStock={this.addNewStock}
             />
           ) : (
-            <Text>Yükleniyor</Text>
+            <View style={[styles.container, styles.loading]}>
+              <ActivityIndicator size="large" color="rgb(134, 65, 244)" />
+            </View>
           )}
         </View>
       </TouchableWithoutFeedback>
@@ -69,6 +73,18 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 10,
     backgroundColor: Colors.dark
+  },
+  loading: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10
+  },
+  container: {
+    flex: 1,
+    position: "absolute",
+    zIndex: 20,
+    height: "100%",
+    width: "100%"
   }
 });
 

@@ -74,7 +74,7 @@ const StockRow = props => {
               />
               <Cell
                 key={rate}
-                data={rate}
+                data={["%", rate]}
                 textStyle={
                   rate < 0 ? styles.decreasingText : styles.increasingText
                 }

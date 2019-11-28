@@ -5,7 +5,8 @@ import {
   StyleSheet,
   StatusBar,
   Keyboard,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Image
 } from "react-native";
 
 import Colors from "../../constants/colors";
@@ -19,7 +20,10 @@ const Header = props => {
     >
       <View style={styles.header}>
         <StatusBar barStyle="light-content" />
-        <Text style={styles.headerTitle}>StockNinja</Text>
+        <Image
+          style={{ height: 80, resizeMode: "center" }}
+          source={require("../../assets/logo2.png")}
+        />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -30,11 +34,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center"
-  },
-  headerTitle: {
-    color: "white",
-    fontSize: 24,
-    fontWeight: "600"
   }
 });
 
